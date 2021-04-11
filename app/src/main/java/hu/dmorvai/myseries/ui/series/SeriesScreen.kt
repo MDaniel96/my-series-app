@@ -1,3 +1,7 @@
 package hu.dmorvai.myseries.ui.series
 
-interface SeriesScreen
+import hu.dmorvai.myseries.model.Serie
+
+interface SeriesScreen {
+    fun showSeries(series: List<Serie>)
+}
