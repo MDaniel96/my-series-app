@@ -1,3 +1,10 @@
 package hu.dmorvai.myseries.interactor.details
 
-class DetailsInteractor
+import hu.dmorvai.myseries.model.Serie
+
+class DetailsInteractor {
+
+    fun addToFavourites(serie: Serie) {
+        TODO()
+    }
+}
