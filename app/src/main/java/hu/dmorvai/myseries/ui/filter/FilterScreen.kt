@@ -1,3 +1,5 @@
 package hu.dmorvai.myseries.ui.filter
 
-interface FilterScreen
+interface FilterScreen {
+    fun show()
+}
