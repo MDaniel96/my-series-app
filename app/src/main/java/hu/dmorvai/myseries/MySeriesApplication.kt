@@ -2,7 +2,7 @@ package hu.dmorvai.myseries
 
 import android.app.Application
 import android.content.Context
-import hu.dmorvai.myseries.ui.UIInjectorModule
+import hu.dmorvai.myseries.ui.UIModule
 
 class MySeriesApplication : Application() {
 
@@ -14,7 +14,6 @@ class MySeriesApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
-        injector =
-            DaggerMySeriesInjectorComponent.builder().uIInjectorModule(UIInjectorModule()).build()
+        injector = DaggerMySeriesInjectorComponent.builder().uIModule(UIModule()).build()
     }
 }

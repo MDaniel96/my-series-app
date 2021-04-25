@@ -16,6 +16,12 @@ class SeriesActivity : AppCompatActivity(), SeriesScreen {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_series)
         injector.inject(this)
+        seriesPresenter.attachScreen(this)
+    }
+
+    override fun onDestroy() {
+        seriesPresenter.detachScreen()
+        super.onDestroy()
     }
 
     override fun showSeries(series: List<Serie>) {
