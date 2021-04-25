@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import hu.dmorvai.myseries.MySeriesApplication.Companion.injector
 import hu.dmorvai.myseries.R
+import hu.dmorvai.myseries.model.Season
 import hu.dmorvai.myseries.model.Serie
 import javax.inject.Inject
 
@@ -25,6 +26,10 @@ class SeriesActivity : AppCompatActivity(), SeriesScreen {
     }
 
     override fun showSeries(series: List<Serie>) {
+        TODO()
+    }
+
+    override fun showSeasons(seasons: List<Season>) {
         TODO()
     }
 }
