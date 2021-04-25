@@ -1,8 +1,10 @@
 package hu.dmorvai.myseries.interactor.series
 
+import hu.dmorvai.myseries.MySeriesApplication.Companion.appDatabase
 import hu.dmorvai.myseries.interactor.series.event.GetSeasonsEvent
 import hu.dmorvai.myseries.interactor.series.event.GetSeriesEvent
 import hu.dmorvai.myseries.model.Season
+import hu.dmorvai.myseries.model.Serie
 import hu.dmorvai.myseries.model.SerieResult
 import hu.dmorvai.myseries.network.SeriesApi
 import org.greenrobot.eventbus.EventBus
@@ -15,11 +17,7 @@ class SeriesInteractor @Inject constructor(
     private val seriesApi: SeriesApi
 ) {
 
-    fun getFavouriteSeries() {
-        TODO()
-    }
-
-    fun getSeries(title: String) {
+    fun getFavouriteSeries(title: String) {
         seriesApi.getSeries(title).enqueue(object : Callback<List<SerieResult>> {
             override fun onResponse(call: Call<List<SerieResult>>, response: Response<List<SerieResult>>) {
                 EventBus.getDefault().post(
@@ -59,5 +57,21 @@ class SeriesInteractor @Inject constructor(
                 )
             }
         })
+    }
+
+    suspend fun saveFavouriteSerie(serie: Serie) {
+        appDatabase.serieDao().insertSerie(serie)
+    }
+
+    suspend fun getFavouriteSeries(): List<Serie> {
+        return appDatabase.serieDao().getSeries()
+    }
+
+    suspend fun deleteFavouriteSerie(serie: Serie) {
+        appDatabase.serieDao().deleteSerie(serie)
+    }
+
+    suspend fun deleteAllSeries() {
+        appDatabase.serieDao().deleteAllSeries()
     }
 }

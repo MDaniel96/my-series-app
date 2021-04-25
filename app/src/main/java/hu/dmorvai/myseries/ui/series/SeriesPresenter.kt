@@ -12,7 +12,6 @@ import org.greenrobot.eventbus.ThreadMode
 import java.util.concurrent.Executor
 import javax.inject.Inject
 
-
 class SeriesPresenter @Inject constructor(
     private val executor: Executor,
     private val seriesInteractor: SeriesInteractor
@@ -28,13 +27,21 @@ class SeriesPresenter @Inject constructor(
         super.detachScreen()
     }
 
-    fun queryFavouriteSeries() {
-        TODO()
+    suspend fun addToFavouriteSeries(serie: Serie) {
+        seriesInteractor.saveFavouriteSerie(serie)
+    }
+
+    suspend fun queryFavouriteSeries(): List<Serie> {
+        return seriesInteractor.getFavouriteSeries()
+    }
+
+    suspend fun deleteFavouriteSerie(serie: Serie) {
+        seriesInteractor.deleteFavouriteSerie(serie)
     }
 
     fun querySeries(title: String) {
         executor.execute {
-            seriesInteractor.getSeries(title)
+            seriesInteractor.getFavouriteSeries(title)
         }
     }
 
