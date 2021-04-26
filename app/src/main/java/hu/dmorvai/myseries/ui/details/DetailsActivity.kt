@@ -14,6 +14,12 @@ class DetailsActivity : AppCompatActivity(), DetailsScreen {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injector.inject(this)
+        detailsPresenter.attachScreen(this)
+    }
+
+    override fun onDestroy() {
+        detailsPresenter.detachScreen()
+        super.onDestroy()
     }
 
     override fun showDetails(serie: Serie) {
