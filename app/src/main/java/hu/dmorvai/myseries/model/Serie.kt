@@ -18,5 +18,11 @@ data class Serie(
     var genres: List<String>? = null,
 
     @SerializedName("premiered")
-    var premiered: String? = null
+    var premiered: String? = null,
+
+    @SerializedName("rating")
+    var rating: Rating? = null,
+
+    @SerializedName("image")
+    var image: Image? = null
 )

@@ -41,7 +41,7 @@ class SeriesPresenter @Inject constructor(
 
     fun querySeries(title: String) {
         executor.execute {
-            seriesInteractor.getFavouriteSeries(title)
+            seriesInteractor.getSeriesByTitle(title)
         }
     }
 
