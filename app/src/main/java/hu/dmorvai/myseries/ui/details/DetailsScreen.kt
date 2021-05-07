@@ -1,7 +1,7 @@
 package hu.dmorvai.myseries.ui.details
 
-import hu.dmorvai.myseries.model.Serie
+import hu.dmorvai.myseries.model.Season
 
 interface DetailsScreen {
-    fun showDetails(serie: Serie)
+    fun showDetails(seasons: List<Season>)
 }

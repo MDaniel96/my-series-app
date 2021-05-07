@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "serie")
 data class Serie(
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @SerializedName("id")
     var id: Long? = null,
 
@@ -18,5 +18,17 @@ data class Serie(
     var genres: List<String>? = null,
 
     @SerializedName("premiered")
-    var premiered: String? = null
+    var premiered: String? = null,
+
+    @SerializedName("rating")
+    var rating: Rating? = null,
+
+    @SerializedName("image")
+    var image: Image? = null,
+
+    @SerializedName("runtime")
+    var runtime: Int? = null,
+
+    @SerializedName("summary")
+    var summary: String? = null
 )

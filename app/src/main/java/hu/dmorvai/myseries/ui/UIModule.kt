@@ -4,7 +4,6 @@ import dagger.Module
 import dagger.Provides
 import hu.dmorvai.myseries.interactor.series.SeriesInteractor
 import hu.dmorvai.myseries.ui.details.DetailsPresenter
-import hu.dmorvai.myseries.ui.filter.FilterPresenter
 import hu.dmorvai.myseries.ui.series.SeriesPresenter
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
@@ -19,11 +18,7 @@ class UIModule {
 
     @Provides
     @Singleton
-    fun filterPresenter() = FilterPresenter()
-
-    @Provides
-    @Singleton
-    fun detailsPresenter() = DetailsPresenter()
+    fun detailsPresenter(executor: Executor, seriesInteractor: SeriesInteractor) = DetailsPresenter(executor, seriesInteractor)
 
     @Provides
     @Singleton

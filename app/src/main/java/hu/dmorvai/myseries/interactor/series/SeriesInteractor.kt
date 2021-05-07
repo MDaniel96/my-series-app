@@ -17,7 +17,7 @@ class SeriesInteractor @Inject constructor(
     private val seriesApi: SeriesApi
 ) {
 
-    fun getFavouriteSeries(title: String) {
+    fun getSeriesByTitle(title: String) {
         seriesApi.getSeries(title).enqueue(object : Callback<List<SerieResult>> {
             override fun onResponse(call: Call<List<SerieResult>>, response: Response<List<SerieResult>>) {
                 EventBus.getDefault().post(
