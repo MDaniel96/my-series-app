@@ -5,5 +5,6 @@ import hu.dmorvai.myseries.model.Serie
 
 interface SeriesScreen {
     fun showSeries(series: List<Serie>)
+    fun showFilteredSeries(categoryFilters: List<String>)
     fun showSeasons(seasons: List<Season>)
 }

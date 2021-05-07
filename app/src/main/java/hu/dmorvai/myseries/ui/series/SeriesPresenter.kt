@@ -51,6 +51,10 @@ class SeriesPresenter @Inject constructor(
         }
     }
 
+    fun applyFilter(categoryFilters: List<String>) {
+        screen?.showFilteredSeries(categoryFilters)
+    }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onEventMainThread(event: GetSeriesEvent) {
         if (event.throwable != null) {

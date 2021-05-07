@@ -4,4 +4,13 @@
     <string name="title">Title</string>
     <string name="year">Year</string>
     <string name="rating_out_of_10">%1$s/10</string>
+    <string name="filter">filter</string>
+    <string name="apply">Apply</string>
+    <string name="cancel">Cancel</string>
+    <string name="filter_series">Filter series by category</string>
+    <string name="filter_series_by_categories">Filter series by categories</string>
+    <string name="fantasy">Fantasy</string>
+    <string name="adventure">Adventure</string>
+    <string name="comedy">Comedy</string>
+    <string name="family">Family</string>
 </resources>
