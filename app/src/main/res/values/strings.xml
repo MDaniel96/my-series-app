@@ -13,4 +13,8 @@
     <string name="adventure">Adventure</string>
     <string name="comedy">Comedy</string>
     <string name="family">Family</string>
+    <string name="minutes">%1$s minutes</string>
+    <string name="seasons">%1$s seasons</string>
+    <string name="very_long_text">Very long text</string>
+    <string name="genres">genres</string>
 </resources>

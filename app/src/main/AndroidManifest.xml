@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MySeries"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.details.DetailsActivity" />
         <activity android:name=".ui.series.SeriesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

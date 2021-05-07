@@ -24,5 +24,11 @@ data class Serie(
     var rating: Rating? = null,
 
     @SerializedName("image")
-    var image: Image? = null
+    var image: Image? = null,
+
+    @SerializedName("runtime")
+    var runtime: Int? = null,
+
+    @SerializedName("summary")
+    var summary: String? = null
 )

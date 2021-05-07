@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import hu.dmorvai.myseries.R
@@ -15,7 +16,8 @@ import java.time.LocalDate
 
 class SeriesAdapter(
     private val context: Context,
-    private var series: List<Serie>
+    private var series: List<Serie>,
+    private val itemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<SeriesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -29,6 +31,9 @@ class SeriesAdapter(
             holder.tvYear.text = if (it.premiered != null) LocalDate.parse(it.premiered).year.toString() else "TBD"
             holder.tvRating.text = String.format(context.getString(R.string.rating_out_of_10), it.rating?.average)
             Glide.with(context).load(it.image?.medium).into(holder.ivImage)
+            holder.listItemSerie.setOnClickListener { view ->
+                itemClickListener.onItemClicked(it)
+            }
         }
     }
 
@@ -39,5 +44,10 @@ class SeriesAdapter(
         var tvTitle: TextView = view.tvTitle
         var tvYear: TextView = view.tvYear
         var tvRating: TextView = view.tvRating
+        var listItemSerie: CardView = view.listItemSerie
+    }
+
+    interface OnItemClickListener {
+        fun onItemClicked(serie: Serie)
     }
 }

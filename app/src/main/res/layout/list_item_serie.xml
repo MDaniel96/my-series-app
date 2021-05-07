@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/listItemSerie"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -8,14 +9,15 @@
     android:layout_marginRight="9dp"
     android:layout_marginBottom="8dp"
     android:backgroundTint="#4DD1CDCD"
-    card_view:cardElevation="0dp"
-    card_view:cardCornerRadius="10dp">
+    card_view:cardCornerRadius="10dp"
+    card_view:cardElevation="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/ivImage"
@@ -28,8 +30,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
             android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
             android:orientation="vertical">
 
             <TextView

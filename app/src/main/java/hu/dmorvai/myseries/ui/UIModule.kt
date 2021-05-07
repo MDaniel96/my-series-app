@@ -18,7 +18,7 @@ class UIModule {
 
     @Provides
     @Singleton
-    fun detailsPresenter() = DetailsPresenter()
+    fun detailsPresenter(executor: Executor, seriesInteractor: SeriesInteractor) = DetailsPresenter(executor, seriesInteractor)
 
     @Provides
     @Singleton
