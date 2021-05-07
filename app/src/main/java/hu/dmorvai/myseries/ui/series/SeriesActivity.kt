@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import hu.dmorvai.myseries.MySeriesApplication.Companion.context
@@ -14,6 +15,9 @@ import hu.dmorvai.myseries.model.Serie
 import hu.dmorvai.myseries.ui.details.DetailsActivity
 import hu.dmorvai.myseries.ui.series.filter.FilterSeriesFragment
 import kotlinx.android.synthetic.main.activity_series.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class SeriesActivity : AppCompatActivity(), SeriesScreen, SeriesAdapter.OnItemClickListener {
@@ -36,9 +40,14 @@ class SeriesActivity : AppCompatActivity(), SeriesScreen, SeriesAdapter.OnItemCl
         seriesAdapter = SeriesAdapter(context, displayedSeries, this)
         rvSeries.layoutManager = layoutManager
         rvSeries.adapter = seriesAdapter
+        getFavouriteSeries()
 
         btnSearch.setOnClickListener {
-            seriesPresenter.querySeries(etSearch.text.toString())
+            if (etSearch.text.isNullOrBlank()) {
+                getFavouriteSeries()
+            } else {
+                seriesPresenter.querySeries(etSearch.text.toString())
+            }
         }
     }
 
@@ -77,5 +86,14 @@ class SeriesActivity : AppCompatActivity(), SeriesScreen, SeriesAdapter.OnItemCl
         val intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra("SERIE", Gson().toJson(serie))
         startActivity(intent)
+    }
+
+    private fun getFavouriteSeries() {
+        lifecycleScope.launch(Dispatchers.Main) {
+            val favouriteSeries = lifecycleScope.async(Dispatchers.IO) {
+                seriesPresenter.queryFavouriteSeries()
+            }.await()
+            showSeries(favouriteSeries)
+        }
     }
 }

@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 import hu.dmorvai.myseries.data.util.Converters
 import hu.dmorvai.myseries.model.Serie
 
-@Database(entities = [Serie::class], version = 1)
+@Database(entities = [Serie::class], version = 3)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 

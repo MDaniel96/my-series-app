@@ -25,18 +25,6 @@ class SeriesPresenter @Inject constructor(
         super.detachScreen()
     }
 
-    suspend fun addToFavouriteSeries(serie: Serie) {
-        seriesInteractor.saveFavouriteSerie(serie)
-    }
-
-    suspend fun queryFavouriteSeries(): List<Serie> {
-        return seriesInteractor.getFavouriteSeries()
-    }
-
-    suspend fun deleteFavouriteSerie(serie: Serie) {
-        seriesInteractor.deleteFavouriteSerie(serie)
-    }
-
     fun querySeries(title: String) {
         executor.execute {
             seriesInteractor.getSeriesByTitle(title)
@@ -45,6 +33,10 @@ class SeriesPresenter @Inject constructor(
 
     fun applyFilter(categoryFilters: List<String>) {
         screen?.showFilteredSeries(categoryFilters)
+    }
+
+    suspend fun queryFavouriteSeries(): List<Serie> {
+        return seriesInteractor.getFavouriteSeries()
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

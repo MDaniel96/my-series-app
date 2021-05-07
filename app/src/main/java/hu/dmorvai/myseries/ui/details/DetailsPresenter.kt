@@ -16,8 +16,6 @@ class DetailsPresenter @Inject constructor(
     private val seriesInteractor: SeriesInteractor
 ) : Presenter<DetailsScreen>() {
 
-    lateinit var serie: Serie
-
     override fun attachScreen(screen: DetailsScreen) {
         super.attachScreen(screen)
         EventBus.getDefault().register(this)
@@ -29,10 +27,21 @@ class DetailsPresenter @Inject constructor(
     }
 
     fun querySeasons(serie: Serie) {
-        this.serie = serie
         executor.execute {
             seriesInteractor.getSeasons(serie.id!!)
         }
+    }
+
+    suspend fun addToFavouriteSeries(serie: Serie) {
+        seriesInteractor.saveFavouriteSerie(serie)
+    }
+
+    suspend fun queryFavouriteSeries(): List<Serie> {
+        return seriesInteractor.getFavouriteSeries()
+    }
+
+    suspend fun deleteFavouriteSerie(serie: Serie) {
+        seriesInteractor.deleteFavouriteSerie(serie)
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -40,11 +49,7 @@ class DetailsPresenter @Inject constructor(
         if (event.throwable != null) {
             println("Error")
         } else {
-            screen?.showDetails(serie, event.seasons as MutableList<Season>)
+            screen?.showDetails(event.seasons as MutableList<Season>)
         }
-    }
-
-    fun markFavourite() {
-        TODO()
     }
 }
