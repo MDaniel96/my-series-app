@@ -13,7 +13,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class SeriesInteractor @Inject constructor(
+open class SeriesInteractor @Inject constructor(
     private val seriesApi: SeriesApi
 ) {
 

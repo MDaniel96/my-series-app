@@ -1,6 +1,5 @@
 package hu.dmorvai.myseries.mock
 
-
 import dagger.Module
 import dagger.Provides
 import hu.dmorvai.myseries.network.SeriesApi
@@ -21,5 +20,5 @@ class MockNetworkModule {
 
     @Provides
     @Singleton
-    fun provideArtistsApi(): SeriesApi = MockSeriesApi()
+    fun provideSeriesApi(): SeriesApi = MockSeriesApi()
 }
