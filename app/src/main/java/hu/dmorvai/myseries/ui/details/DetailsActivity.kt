@@ -47,6 +47,10 @@ class DetailsActivity : AppCompatActivity(), DetailsScreen {
         }
         detailsPresenter.querySeasons(serie)
         getFavouriteSeries()
+
+        btnCrash.setOnClickListener {
+            throw RuntimeException()
+        }
     }
 
     private fun getFavouriteSeries() {

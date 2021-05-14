@@ -18,4 +18,5 @@
     <string name="very_long_text">Very long text</string>
     <string name="genres">genres</string>
     <string name="menu_favourite">favourite</string>
+    <string name="crash_app">Crash app!</string>
 </resources>
